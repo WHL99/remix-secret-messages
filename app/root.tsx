@@ -1,4 +1,5 @@
 import {
+  Link,
   Links,
   Meta,
   Outlet,
@@ -16,6 +17,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <nav>
+          <Link to="/new/message" prefetch="intent">
+            Click here to create a new message
+          </Link>
+          <Link to="/message/my_message" prefetch="intent">
+            Click here to access your message
+          </Link>
+        </nav>
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -26,4 +35,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return <Outlet />;
+}
+
+
+export function links() {
+  return [{ rel: "stylesheet", href: "/app/styles/main.css" }];
 }
